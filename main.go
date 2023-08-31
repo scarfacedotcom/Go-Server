@@ -12,8 +12,17 @@ func formHandler(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	name := r.FormValue("name")
-	address := r.FormValue("address")
+	// Debugging: Print the raw form data
+	//fmt.Println("Raw form data:", r.PostForm.Encode())
+	// name := r.FormValue("name")
+	// address := r.FormValue("address")
+	name := r.PostFormValue("name")
+	address := r.PostFormValue("address")
+
+	// Debugging: Print values before displaying
+	fmt.Println("Name:", name)
+	fmt.Println("Address:", address)
+
 	fmt.Fprintf(w, "POST request sucessful")
 	fmt.Fprintf(w, "Name=%s\n", name)
 	fmt.Fprintf(w, "Address=%s\n", address)
